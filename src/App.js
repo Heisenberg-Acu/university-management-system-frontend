@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
-
+import * as React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import './styles/App.css';
+import ReactDOM from 'react-dom/client';
+const Navbar = React.lazy(() => import("./components/common/Navbar"));
+const LandingPage = React.lazy(() => import("./views/LandingPage/LandingPage"));
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <BrowserRouter>
+      <div className='app'>
+        <Routes>
+          <Route path="*" element={<LandingRoutes />} />
+        </Routes>
+      </div>
+      </BrowserRouter>
+  );
+}
+const LandingRoutes = () => {
+  return(
+    <div>
+      <Navbar></Navbar>
+      <Routes>
+        <Route path='/' element={<LandingPage/>}/>
+      </Routes>
     </div>
   );
 }
-
 export default App;
