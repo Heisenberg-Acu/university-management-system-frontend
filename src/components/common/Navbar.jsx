@@ -73,7 +73,7 @@ const Navbar = () => {
                         <Button className='btn nav-btn ms-5'>Login</Button>
                     </ConfigProvider>
                 </ul>
-                <Button className='nav-btn--collapse' type="primary" onClick={showDrawer} type="text">
+                <Button className='nav-btn--collapse' type="text" onClick={showDrawer}>
                     <MenuOutlined />
                 </Button>
 
