@@ -6,7 +6,7 @@ import './styles/bootstrap-grid.css'
 import ReactDOM from 'react-dom/client';
 ///components
 const Navbar = React.lazy(() => import("./components/common/Navbar"));
-
+const Footer =  React.lazy(() => import("./components/common/Footer"));
 //views
 const LandingPage = React.lazy(() => import("./views/LandingPage/LandingPage"));
 
@@ -24,11 +24,12 @@ function App() {
 const LandingRoutes = () => {
   return(
     <Layout>
-      <Navbar></Navbar>
+      <Navbar />
       <Routes>
         <Route path='/' element={<LandingPage/>}/>
         <Route path='*' element={<Navbar/>}/>
       </Routes>
+      <Footer />
     </Layout>
   );
 }
