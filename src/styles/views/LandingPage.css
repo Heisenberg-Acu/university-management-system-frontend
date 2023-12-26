@@ -20,13 +20,21 @@ body::-webkit-scrollbar {
     justify-content: left;
     align-items: center;
 }
+.dark{
+    height: 800px;
+    width: 100%;
+    display: flex;
+    background-color:rgba(0, 0, 0, 0.55);
+}
 .hero-text{
     /* border-style: solid; */
     border-color: black;
     font-size: 40px;
-    padding-left: 100px;
-
+    padding-left: 120px;
+    padding-top: 300px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    height: 800px;
+    width: 100%;
 }
 .hero-text h1{
     font-size:70px;
@@ -34,6 +42,7 @@ body::-webkit-scrollbar {
 }
 .hero-text p{
     font-size:35px;
+    color: rgb(255, 255, 255);
 }
 
 .hero-btn{

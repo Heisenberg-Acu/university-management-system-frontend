@@ -12,10 +12,12 @@ const LandingPage = () => {
   return (
     <div>
       <div class="hero-img">
+      <div className="dark">
         <div class="hero-text">
           <h1>Welcom To ACU</h1>
           <p>Faculty Of Engineering</p>
           <a href="#" class="hero-btn">About Us</a>
+        </div>
         </div>
       </div>
 
