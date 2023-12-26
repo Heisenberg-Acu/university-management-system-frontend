@@ -9,6 +9,9 @@
 ul{
     list-style: none;
 }
+.footer-logo{
+    padding-left: 75px;
+}
 .footer{
     background-color: #000000;
     padding: 70px 0;
