@@ -7,7 +7,7 @@
 }
   
 .navbar.fixed {
-    background-color: #ffffff;  
+    background-color: rgba(0, 0, 0, 0.92);  
     top: 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -18,7 +18,8 @@
     height: 70px;
 }
 .logo{
-    max-height:60px;
+    max-height:200px;
+    padding-left: 90px;
 }
 .nav-list {
     list-style: none;
@@ -55,7 +56,7 @@
     display: block;
     font-size: 16px;
     padding: 10px 15px;
-    color: #495057;
+    color: #ffffff;
 }
 .nav-link:hover {
     color: #495057;
