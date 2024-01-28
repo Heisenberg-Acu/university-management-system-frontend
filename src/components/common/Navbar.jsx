@@ -36,8 +36,8 @@ const Navbar = () => {
         };
     }, []);
     return (
-        <nav className={`navbar ${isScrolled ? 'fixed' : ''}`}>
-            <div className="navbar-content container-fluid d-flex">
+        <nav className={`container-fluid navbar ${isScrolled ? 'fixed' : ''}`}>
+            <div className="navbar-content container d-flex">
                 <img className='logo' src={Logo} alt="" />
                 <ul className='nav-list '>
                     <li className='nav-item'>
