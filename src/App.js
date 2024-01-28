@@ -8,7 +8,7 @@ import ReactDOM from 'react-dom/client';
 const Navbar = React.lazy(() => import("./components/common/Navbar"));
 const Footer =  React.lazy(() => import("./components/common/Footer"));
 //views
-const LandingPage = React.lazy(() => import("./views/LandingPage/LandingPage"));
+const LandingPage = React.lazy(() => import("./views/LandingContent/LandingPage"));
 
 function App() {
   return (

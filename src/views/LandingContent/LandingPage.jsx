@@ -7,7 +7,8 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleQuestion, faLightbulb } from '@fortawesome/free-regular-svg-icons';
 
-import '../../styles/views/LandingPage.css'
+import '../../styles/views/LandingContent/LandingPage.css'
+
 const LandingPage = () => {
   return (
     <div>

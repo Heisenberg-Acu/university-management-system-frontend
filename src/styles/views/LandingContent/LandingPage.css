@@ -11,7 +11,7 @@ body::-webkit-scrollbar {
     box-sizing: border-box;
 }
 .hero-img {
-    background-image: url("../../assets/common/hero-section-bg.jpg");
+    background-image: url("../../../assets/common/hero-section-bg.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size:cover ;
