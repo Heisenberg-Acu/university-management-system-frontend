@@ -12,15 +12,14 @@ const Footer = () => {
     <footer className="footer">
       <div className="container">
         <div className="row">
-          <div className="footer-col">
+          <div className="footer-col col-md-6 col-lg-3">
             <img className="footer-logo"
               src={Logo}
               alt="ACU Logo"
-              width="450px"
-              style={{ marginLeft: '-170px', marginTop: '-80px' }}
+              style={{width:'90%'}}
             />
           </div>
-          <div className="footer-col">
+          <div className="footer-col col-md-6 col-lg-3">
             <h4>ABOUT US</h4>
             <ul className="p-0">
               <li><a href="#">About ACU</a></li>
@@ -30,7 +29,7 @@ const Footer = () => {
               <li><a href="#">Objectives</a></li>
             </ul>
           </div>
-          <div className="footer-col">
+          <div className="footer-col col-md-6 col-lg-3">
             <h4>Engineering Departments</h4>
             <ul className="p-0">
               <li><a href="#">electrical engineering</a></li>
@@ -40,7 +39,7 @@ const Footer = () => {
               <li><a href="#">payment options</a></li>
             </ul>
           </div>
-          <div className="footer-col">
+          <div className="footer-col col-md-6 col-lg-3">
             <h4>follow us</h4>
             <div className="social-links">
               <a href="#"><FontAwesomeIcon icon={faFacebookF} /></a>

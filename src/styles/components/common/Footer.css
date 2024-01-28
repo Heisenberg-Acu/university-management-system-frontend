@@ -1,25 +1,10 @@
-.container{
-    max-width: 1170px;
-    margin:auto;
-}
-.row{
-    display: flex;
-    flex-wrap: wrap;
-}
 ul{
     list-style: none;
-}
-.footer-logo{
-    padding-left: 75px;
 }
 .footer{
     background-color: #000000;
     padding: 70px 0;
     width: 100%;
-}
-.footer-col{
-   width: 25%;
-   padding: 0 15px;
 }
 .footer-col h4{
     font-size: 18px;
