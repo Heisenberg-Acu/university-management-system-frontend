@@ -14,7 +14,6 @@ body::-webkit-scrollbar {
     font-size: 32px;
     font-weight: 700;
     text-align: center;
-    margin-bottom: 30px;
     position: relative;
 }
 .section-title::before {
@@ -114,4 +113,56 @@ body::-webkit-scrollbar {
 .info-box:hover .info-box-icon {
     background-color: #D50B1B;
     color: white;
+}
+.department {
+    height: 200px;
+    overflow: hidden;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    backdrop-filter: saturate(180%) blur(10px);
+}
+.department-link{
+    margin-top: 60px;
+    margin-left: 80px;
+    display: inline-block;
+    background-color: #1F1E1C;
+    padding: 10px 20px;
+    color: white;
+    font-weight: 500;
+    transition: all .5s ease;
+}
+.department-link span {
+    display: none;
+}
+.department-link:hover {
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+    color: white;
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 40px 40px;
+}
+.department-link:hover span {
+    display: block;
+}
+.department p  {
+    margin-top: 10px;
+    margin-left: 80px;
+    display: inline-block;
+    color: white;
+
+}
+.electrical-department {
+    background-image: url('../../../assets/LandingContent/LandingPage/electrical-engineering.jpg');
+}
+.mechanical-department {
+    background-image: url('../../../assets/LandingContent/LandingPage/mechanical-engineering.jpg');
+}
+.architecture-department {
+    background-image: url('../../../assets/LandingContent/LandingPage/architecture-engineering.jpg');
+}
+.civil-department {
+    background-image: url('../../../assets/LandingContent/LandingPage/civil-engineering.jpg');
 }
