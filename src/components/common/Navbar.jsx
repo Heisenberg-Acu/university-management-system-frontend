@@ -1,10 +1,11 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
+import { useLocation  } from 'react-router-dom';
 import { Button, ConfigProvider, Drawer } from 'antd'
 import { MenuOutlined } from '@ant-design/icons';
 import '../../styles/components/common/Navbar.css';
 import Logo from '../../assets/common/logo.png'
-const Navbar = () => {
+const Navbar = ({style}) => {
     const [open, setOpen] = useState(false);
     const [placement, setPlacement] = useState('left');
     const showDrawer = () => {
@@ -35,10 +36,13 @@ const Navbar = () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
+    const location = useLocation();
+    const urlPage = location.pathname;
+    console.log();
     return (
-        <nav className={`container-fluid navbar ${isScrolled ? 'fixed' : ''}`}>
+        <nav style={urlPage.length !== 1 ? {position:'relative', backgroundColor:'black'} : {}} className={`container-fluid navbar ${isScrolled ? 'fixed' : ''}`}>
             <div className="navbar-content container d-flex">
-                <img className='logo' src={Logo} alt="" />
+                <img className='logo p-0' src={Logo} alt="" style={{maxHeight:'80%'}}/>
                 <ul className='nav-list '>
                     <li className='nav-item'>
                         <a className='nav-link' href="/">Home</a>
