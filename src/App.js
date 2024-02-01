@@ -9,6 +9,7 @@ const Navbar = React.lazy(() => import("./components/common/Navbar"));
 const Footer =  React.lazy(() => import("./components/common/Footer"));
 //views
 const LandingPage = React.lazy(() => import("./views/LandingContent/LandingPage"));
+const LoginPage = React.lazy(() => import('./views/LandingContent/LoginPage'));
 
 function App() {
   return (
@@ -27,6 +28,7 @@ const LandingRoutes = () => {
       <Navbar />
       <Routes>
         <Route path='/' element={<LandingPage/>}/>
+        <Route path='/login' element={<LoginPage />}/>
         <Route path='*' element={<Navbar/>}/>
       </Routes>
       <Footer />
