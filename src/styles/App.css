@@ -19,6 +19,20 @@ body::-webkit-scrollbar {
 }
 .btn {
   border: none;
+  width: fit-content;
+  padding:8px 15px;
+  background-color: white;
+  text-align: center;
+  border-radius: 4px;
+}
+.btn--red {
+  background-color: #D50B1B;
+  color: white;
+  transition: all .3s ease;
+}
+.btn--red:hover {
+  color: white;
+  background-color: #c00010;
 }
 h1, h2, h3, h4, h5, h6 {
   color: #282c34;
