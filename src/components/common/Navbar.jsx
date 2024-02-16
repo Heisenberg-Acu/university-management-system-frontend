@@ -59,23 +59,8 @@ const Navbar = ({style}) => {
                     <li className='nav-item'>
                         <a className='nav-link' href="">Student Activities</a>
                     </li>
-                    <ConfigProvider
-                        theme={{
-                            token: {
-                                colorBgContainer: '#D50B1B',
-                                colorPrimaryHover: '#ffffff',
-                                colorPrimaryActive: '#ffffff'
-                            },
-                            components: {
-                                Button: {
-                                    colorText: '#ffffff',
-                                    borderRadius: 4
-                                }
-                            },
-                        }}
-                    >
-                        <Button className='btn nav-btn ms-5'>Login</Button>
-                    </ConfigProvider>
+                    
+                        <a href='/login' className='btn btn--red ms-5'>Login</a>
                 </ul>
                 <Button className='nav-btn--collapse' type="text" onClick={showDrawer}>
                     <MenuOutlined />
@@ -107,26 +92,9 @@ const Navbar = ({style}) => {
                     </li>
                     
                 </ul>
-                <ConfigProvider
-                    theme={{
-                        token: {
-                            colorBgContainer: '#D50B1B',
-                            colorPrimaryHover: '#ffffff',
-                            colorPrimaryActive: '#ffffff'
-                        },
-                        components: {
-                            Button: {
-                                colorText: '#ffffff',
-                                borderRadius: 4
-                            }
-                        },
-                    }}
-                >
                     <Button className='btn nav-btn ms-5'>Login</Button>
-                </ConfigProvider>
             </Drawer>
         </nav>
-
     )
 }
 
