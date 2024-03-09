@@ -1,13 +1,16 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-import { useLocation  } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Button, ConfigProvider, Drawer } from 'antd'
 import { MenuOutlined } from '@ant-design/icons';
 import '../../styles/components/common/Navbar.css';
 import Logo from '../../assets/common/logo.png'
-const Navbar = ({style}) => {
+import { useAuth } from '../../authContext/AuthProvider';
+const Navbar = () => {
     const [open, setOpen] = useState(false);
     const [placement, setPlacement] = useState('left');
+    const { isLogged, logOut, user } = useAuth();
+    console.log(user);
     const showDrawer = () => {
         setOpen(true);
     };
@@ -36,13 +39,14 @@ const Navbar = ({style}) => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
+
     const location = useLocation();
     const urlPage = location.pathname;
-    console.log();
+
     return (
-        <nav style={urlPage.length !== 1 ? {position:'relative', backgroundColor:'black'} : {}} className={`container-fluid navbar ${isScrolled ? 'fixed' : ''}`}>
+        <nav style={urlPage.length !== 1 ? { position: 'relative', backgroundColor: 'black' } : {}} className={`container-fluid navbar ${isScrolled ? 'fixed' : ''}`}>
             <div className="navbar-content container d-flex">
-                <img className='logo p-0' src={Logo} alt="" style={{maxHeight:'80%'}}/>
+                <img className='logo p-0' src={Logo} alt="" style={{ maxHeight: '80%' }} />
                 <ul className='nav-list '>
                     <li className='nav-item'>
                         <a className='nav-link' href="/">Home</a>
@@ -59,8 +63,24 @@ const Navbar = ({style}) => {
                     <li className='nav-item'>
                         <a className='nav-link' href="">Student Activities</a>
                     </li>
-                    
-                        <a href='/login' className='btn btn--red ms-5'>Login</a>
+                   
+                    <li className='nav-item'>
+                        <a className='nav-link' href="">Student Activities</a>
+                    </li>
+                    {
+                        isLogged ? (<li className='nav-item'><a className='nav-link' href="/admin/dashboard">{user}</a></li>):(null)
+                    }
+                    {
+                        isLogged ? (
+                            <a href="/login" className="btn btn--red ms-5" onClick={(e) => { e.preventDefault(); logOut(); }}>
+                                Logout
+                            </a>
+                        ) : (
+                            <a href="/login" className="btn btn--red ms-5">
+                                Login
+                            </a>
+                        )
+                    }
                 </ul>
                 <Button className='nav-btn--collapse' type="text" onClick={showDrawer}>
                     <MenuOutlined />
@@ -68,7 +88,7 @@ const Navbar = ({style}) => {
 
             </div>
             <Drawer
-                title='Facualty of Engineering'
+                title='Faculty of Engineering'
                 placement={placement}
                 onClose={onClose}
                 open={open}
@@ -90,12 +110,12 @@ const Navbar = ({style}) => {
                     <li className='nav-item'>
                         <a className='nav-link' href="">Student Activities</a>
                     </li>
-                    
+
                 </ul>
-                    <Button className='btn nav-btn ms-5'>Login</Button>
+                <Button className='btn nav-btn ms-5'>Login</Button>
             </Drawer>
         </nav>
     )
 }
 
-export default Navbar
+export default Navbar;
