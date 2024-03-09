@@ -1,4 +1,4 @@
-import {React, useEffect} from 'react';
+import {React} from 'react';
 import { Form, Input, Button, ConfigProvider, message } from 'antd';
 import LogoIcon from '../../assets/common/logo-icon.png';
 import '../../styles/views/LandingContent/LoginPage.css';

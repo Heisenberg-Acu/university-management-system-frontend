@@ -1,14 +1,14 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Button, ConfigProvider, Drawer } from 'antd'
+import { Button, Drawer } from 'antd'
 import { MenuOutlined } from '@ant-design/icons';
 import '../../styles/components/common/Navbar.css';
 import Logo from '../../assets/common/logo.png'
 import { useAuth } from '../../authContext/AuthProvider';
 const Navbar = () => {
     const [open, setOpen] = useState(false);
-    const [placement, setPlacement] = useState('left');
+    // const [placement, setPlacement] = useState('left');
     const { isLogged, logOut, user } = useAuth();
     console.log(user);
     const showDrawer = () => {
@@ -17,9 +17,9 @@ const Navbar = () => {
     const onClose = () => {
         setOpen(false);
     };
-    const onChange = (e) => {
-        setPlacement(e.target.value);
-    };
+    // const onChange = (e) => {
+    //     setPlacement(e.target.value);
+    // };
 
     const [isScrolled, setIsScrolled] = useState(false);
 
@@ -52,20 +52,20 @@ const Navbar = () => {
                         <a className='nav-link' href="/">Home</a>
                     </li>
                     <li className='nav-item'>
-                        <a className='nav-link' href="">About Us</a>
+                        <a className='nav-link' href="/">About Us</a>
                     </li>
                     <li className='nav-item'>
-                        <a className='nav-link' href="">Departments</a>
+                        <a className='nav-link' href="/">Departments</a>
                     </li>
                     <li className='nav-item'>
-                        <a className='nav-link' href="">Events</a>
+                        <a className='nav-link' href="/">Events</a>
                     </li>
                     <li className='nav-item'>
-                        <a className='nav-link' href="">Student Activities</a>
+                        <a className='nav-link' href="/">Student Activities</a>
                     </li>
                    
                     <li className='nav-item'>
-                        <a className='nav-link' href="">Student Activities</a>
+                        <a className='nav-link' href="/">Student Activities</a>
                     </li>
                     {
                         isLogged ? (<li className='nav-item'><a className='nav-link' href="/admin/dashboard">{user}</a></li>):(null)
@@ -89,7 +89,7 @@ const Navbar = () => {
             </div>
             <Drawer
                 title='Faculty of Engineering'
-                placement={placement}
+              //  placement={placement}
                 onClose={onClose}
                 open={open}
                 width={275}
@@ -99,16 +99,16 @@ const Navbar = () => {
                         <a className='nav-link' href="/">Home</a>
                     </li>
                     <li className='nav-item'>
-                        <a className='nav-link' href="">About Us</a>
+                        <a className='nav-link' href="/">About Us</a>
                     </li>
                     <li className='nav-item'>
-                        <a className='nav-link' href="">Departments</a>
+                        <a className='nav-link' href="/">Departments</a>
                     </li>
                     <li className='nav-item'>
-                        <a className='nav-link' href="">Events</a>
+                        <a className='nav-link' href="/">Events</a>
                     </li>
                     <li className='nav-item'>
-                        <a className='nav-link' href="">Student Activities</a>
+                        <a className='nav-link' href="/">Student Activities</a>
                     </li>
 
                 </ul>

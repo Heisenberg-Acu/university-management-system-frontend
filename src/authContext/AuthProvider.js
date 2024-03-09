@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import { Spin, ConfigProvider } from 'antd';
-import { useNavigate } from 'react-router-dom';
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
