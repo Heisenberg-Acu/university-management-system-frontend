@@ -1,0 +1,27 @@
+a{
+    text-decoration: none;
+}
+
+
+.not-found-page-data{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #D50B1B;
+}
+.not-found-page-data h1{
+    font-size: 10rem;
+    font-weight: 700;
+}
+.not-found-page-data p{
+    font-size: 2rem;
+    font-weight: 600;
+}
+.not-found-page-data a{
+    padding: .5rem 3rem;
+    border-radius: 2rem;
+    background-color: #282c34;
+    color: white;
+    border: transparent;
+}
