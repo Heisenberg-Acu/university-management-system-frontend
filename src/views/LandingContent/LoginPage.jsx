@@ -1,40 +1,40 @@
-import React from 'react';
+import {React, useEffect} from 'react';
 import { Form, Input, Button, ConfigProvider, message } from 'antd';
-import axios from 'axios';
-import LogoIcon from '../../assets/common/logo-icon.png'
-import '../../styles/views/LandingContent/LoginPage.css'
-const LoginPage = () => {
-  const apiUrl = 'https://acu-eng.onrender.com/api/v1/signin';
-  const [messageApi, contextHolder] = message.useMessage();
+import LogoIcon from '../../assets/common/logo-icon.png';
+import '../../styles/views/LandingContent/LoginPage.css';
+import { useAuth } from '../../authContext/AuthProvider';
+import { useNavigate } from 'react-router-dom';
 
-  const onFinish = (values) => {
+const LoginPage = () => {
+  const  auth = useAuth();
+  const [messageApi, contextHolder] = message.useMessage();
+  if(auth.isLogged) {
+    window.location.href = 'admin/dashboard'
+  }
+  const navigate = useNavigate();
+  const onFinish = async (values) => {
     const { email, password } = values;
-    console.log('Email:', email);
-    console.log('Password:', password);
-    axios
-      .post(apiUrl, {
-        email: email,
-        password: password,
-      })
-      .then((response) => {
-        // Handle the response data
-        console.log('Response:', response.data.message);
-          messageApi.open({
-            type: 'success',
-            content: 'Welcome back, '+email,
-          });
-      
-      })
-      .catch((response) => {
-        // Handle errors
+    console.log(email);
+    try {
+      const response = await auth.loginAction({ email, password });
+      if (response) {
+        messageApi.open({
+          type: 'success',
+          content: `Welcome back, ${email}`,
+        });
+        navigate('/admin/dashboard');
+      }
+      else {
         messageApi.open({
           type: 'error',
           content: 'Wrong Email or password',
         });
-        console.error('Error:', response.response.data.message);
-      });
-  };
+      }
 
+    } catch (error) {
+      console.error('Error:', error.response?.data?.message || error.message);
+    }
+  };
   return (
     <div className='container'>
       {contextHolder}
@@ -44,17 +44,17 @@ const LoginPage = () => {
             Button: {
               colorPrimary: '#D50B1B',
               colorPrimaryActive: '#D50B1B',
-              colorPrimaryHover: '#c70f1f'
+              colorPrimaryHover: '#c70f1f',
             },
             Form: {
-              verticalLabelPadding: 0
+              verticalLabelPadding: 0,
             },
             Input: {
-              colorPrimaryHover:'#D50B1B',
-              colorPrimaryActive:'#D50B1B',
-              colorPrimary:'#D50B1B',
+              colorPrimaryHover: '#D50B1B',
+              colorPrimaryActive: '#D50B1B',
+              colorPrimary: '#D50B1B',
             },
-          }
+          },
         }}
       >
         <Form
@@ -67,12 +67,14 @@ const LoginPage = () => {
             maxWidth: 488,
           }}
           onFinish={onFinish}
-          requiredMark ={false}
+          requiredMark={false}
         >
           <div className='d-flex justify-content-center'>
-          <img style={{width:55}} src={LogoIcon} alt="" />
+            <img style={{ width: 55 }} src={LogoIcon} alt="" />
           </div>
-          <h3 style={{textAlign:'center'}} className='m-3'>Login to yout account</h3>
+          <h3 style={{ textAlign: 'center' }} className='m-3'>
+            Login to your account
+          </h3>
           <Form.Item
             className='m-3'
             label="Email"
@@ -105,7 +107,7 @@ const LoginPage = () => {
               span: 24,
             }}
           >
-            <Button style={{width:'100%'}} className='mt-3' type="primary" htmlType="submit">
+            <Button style={{ width: '100%' }} className='mt-3' type="primary" htmlType="submit">
               Login
             </Button>
           </Form.Item>
