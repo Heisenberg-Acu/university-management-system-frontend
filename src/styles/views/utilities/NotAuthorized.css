@@ -1,0 +1,31 @@
+a{
+    text-decoration: none;
+}
+
+.not-authorized-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.not-authorized-page-data{
+    color: #D50B1B;
+}
+.not-authorized-page-data h1{
+    font-size: 5rem;
+    font-weight: 700;
+}
+.not-authorized-page-data p{
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 1.5rem 0;
+}
+.not-authorized-page-data a{
+    padding: .5rem 3rem;
+    border-radius: 2rem;
+    background-color: #282c34;
+    color: white;
+    border: transparent;
+    display: inline-block;
+}
