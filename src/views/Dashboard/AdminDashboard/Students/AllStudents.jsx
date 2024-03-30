@@ -1,6 +1,6 @@
 import React, { useEffect, useState, startTransition } from 'react';
-import { Breadcrumb, ConfigProvider, Table,  Modal } from 'antd';
-import { useNavigate  } from 'react-router-dom';
+import { Breadcrumb, ConfigProvider, Table, Modal } from 'antd';
+import { useNavigate, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
@@ -63,8 +63,8 @@ const AllStudents = () => {
           action: (
             <div className='d-flex'>
               <button className='btn btn--red me-3' onClick={() => startTransition(() => {
-  navigate(`/admin/students/edit-student/${apiStudent.studentId}`);
-})}>
+                navigate(`/admin/students/edit-student/${apiStudent.studentId}`);
+              })}>
                 <FontAwesomeIcon icon={faPenToSquare} /></button>
               <button className='btn btn--red' onClick={() => showDeleteConfirm(apiStudent.studentId)}>
                 <FontAwesomeIcon icon={faTrashCan} />
@@ -124,7 +124,7 @@ const AllStudents = () => {
         <section className='p-4 mt-5' style={{ backgroundColor: 'white', borderRadius: 12 }}>
           <div className='d-flex justify-content-between'>
             <h2 className='page-title'>Students</h2>
-            <a className='btn btn--red' href='/admin/students/add-student'><FontAwesomeIcon icon={faPlus} /></a>
+            <Link className='btn btn--red' to='/admin/students/add-student'><FontAwesomeIcon icon={faPlus} /></Link>
           </div>
           <Table className='mt-5' columns={StudentsTableColumns} dataSource={students} />
           <Modal
