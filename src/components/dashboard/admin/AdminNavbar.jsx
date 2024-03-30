@@ -1,33 +1,34 @@
 import { React, useState } from 'react'
+import {Link}  from 'react-router-dom';
 import { Menu, ConfigProvider } from 'antd'
 const items = [
     {
         key: 'dashboard',
-        label: (<a href='/admin/dashboard'>Dashboard</a>)
+        label: (<Link to='/admin'>Dashboard</Link>)
     },
     {
         key: 'students',
-        label: (<a href='/admin/students'>Students</a>)
+        label: (<Link to='/admin/students'>Students</Link>)
     },
     {
         key: 'lecturers',
-        label: (<a href='/admin/lecturers'>Lecturers</a>)
+        label: (<Link to='/admin/lecturers'>Lecturers</Link>)
     },
     {
-        key: 'assistantLecturer',
-        label: (<a href='/admin/assistant-lecturers'>Assistant Lecturers</a>)
+        key: 'assistant-lecturers',
+        label: (<Link to='/admin/assistant-lecturers'>Assistant Lecturers</Link>)
     },
     {
         key: 'courses',
-        label: (<a href='/admin/courses'>Courses</a>)
+        label: (<Link to='/admin/courses'>Courses</Link>)
     },
     {
         key: 'rooms',
-        label: (<a href='/admin/rooms'>Rooms</a>)
+        label: (<Link to='/admin/rooms'>Rooms</Link>)
     },
     {
         key: 'classes',
-        label: (<a href='/admin/classes'>Classes</a>)
+        label: (<Link to='/admin/classes'>Classes</Link>)
     }
 ]
 const AdminNavbar = () => {
