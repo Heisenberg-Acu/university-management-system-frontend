@@ -2,8 +2,7 @@ import React, { useEffect, useState, startTransition } from 'react';
 import { Breadcrumb, ConfigProvider, Table, Modal } from 'antd';
 import { useNavigate, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faTrashCan } from '@fortawesome/free-solid-svg-icons';
-import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
+import { faBars, faPlus, faTrashCan, fabars } from '@fortawesome/free-solid-svg-icons';
 import StudentsSearch from '../../../../components/dashboard/admin/students/StudentsSearch';
 import axios from 'axios';
 import '../../../../styles/views/Dashboard/CommonStyle.css';
@@ -62,10 +61,10 @@ const AllStudents = () => {
           level: apiStudent.level,
           action: (
             <div className='d-flex'>
-              <button className='btn btn--red me-3' onClick={() => startTransition(() => {
-                navigate(`/admin/students/edit-student/${apiStudent.studentId}`);
-              })}>
-                <FontAwesomeIcon icon={faPenToSquare} /></button>
+              <button className='btn btn--red me-3' onClick={() => {
+                navigate(`/admin/students/profile/${apiStudent.studentId}`);
+              }}>
+                <FontAwesomeIcon icon={faBars} /></button>
               <button className='btn btn--red' onClick={() => showDeleteConfirm(apiStudent.studentId)}>
                 <FontAwesomeIcon icon={faTrashCan} />
               </button>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Breadcrumb, ConfigProvider, Table, Modal } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faTrashCan } from '@fortawesome/free-solid-svg-icons';
@@ -40,6 +40,7 @@ const AllLecturers = () => {
   const [selectedLecturerId, setSelectedLecturerId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const navigate = useNavigate();
   useEffect(() => {
     fetchData();
   }, []);
@@ -53,16 +54,16 @@ const AllLecturers = () => {
         },
       });
       const formattedLecturers = response.data.map(lecturer => ({
-        key: lecturer.lecturerId,
-        name: lecturer.userId.fullName,
-        email: lecturer.userId.email,
-        phoneNumber: lecturer.userId.phoneNumber,
+        key: lecturer.roleDocument.lecturerId,
+        name: lecturer.fullName,
+        email: lecturer.email,
+        phoneNumber: lecturer.phoneNumber,
         action: (
           <div>
-            <button className='btn btn--red me-3' onClick={() => handleEdit(lecturer.lecturerId)}>
+            <button className='btn btn--red me-3' onClick={() => handleEdit(lecturer.roleDocument.lecturerId)}>
               <FontAwesomeIcon icon={faPenToSquare}/>
             </button>
-            <button className='btn btn--red' onClick={() => showDeleteConfirm(lecturer.lecturerId)}>
+            <button className='btn btn--red' onClick={() => showDeleteConfirm(lecturer.roleDocument.lecturerId)}>
               <FontAwesomeIcon icon={faTrashCan}/>
             </button>
           </div>

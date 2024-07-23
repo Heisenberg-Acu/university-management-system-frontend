@@ -1,16 +1,16 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Button, Drawer } from 'antd'
-import { MenuOutlined } from '@ant-design/icons';
+import { MenuOutlined, UserOutlined } from '@ant-design/icons';
 import '../../styles/components/common/Navbar.css';
 import Logo from '../../assets/common/logo.png'
 import { useAuth } from '../../authContext/AuthProvider';
 const Navbar = () => {
     const [open, setOpen] = useState(false);
     // const [placement, setPlacement] = useState('left');
-    const { isLogged, logOut, user } = useAuth();
-    console.log(user);
+    const { isLogged, logOut, user, role } = useAuth();
+    const username = user ?  user.split(" ")[0]:'';
     const showDrawer = () => {
         setOpen(true);
     };
@@ -22,7 +22,9 @@ const Navbar = () => {
     // };
 
     const [isScrolled, setIsScrolled] = useState(false);
-
+    const dashboardRedirct = () => {
+        window.location.href='/'+role.toLowerCase()+'/dashboard';
+    }
     useEffect(() => {
         const handleScroll = () => {
             const scrollPosition = window.scrollY;
@@ -57,22 +59,12 @@ const Navbar = () => {
                     <li className='nav-item'>
                         <a className='nav-link' href="/">Departments</a>
                     </li>
-                    <li className='nav-item'>
-                        <a className='nav-link' href="/">Events</a>
-                    </li>
-                    <li className='nav-item'>
-                        <a className='nav-link' href="/">Student Activities</a>
-                    </li>
-                   
-                    <li className='nav-item'>
-                        <a className='nav-link' href="/">Student Activities</a>
-                    </li>
                     {
-                        isLogged ? (<li className='nav-item'><a className='nav-link' href="/admin/dashboard">{user}</a></li>):(null)
+                        isLogged ? (<li className='nav-item ms-4' style={{cursor:'pointer'}}><p className='nav-link' onClick={dashboardRedirct}><UserOutlined className='me-2'/>{username}</p></li>):(null)
                     }
                     {
                         isLogged ? (
-                            <a href="/login" className="btn btn--red ms-5" onClick={(e) => { e.preventDefault(); logOut(); }}>
+                            <a href="/login" className="btn btn--red ms-2" onClick={(e) => { e.preventDefault(); logOut(); }}>
                                 Logout
                             </a>
                         ) : (

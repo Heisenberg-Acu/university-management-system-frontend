@@ -3,15 +3,13 @@ import { Form, Input, Button, ConfigProvider, message } from 'antd';
 import LogoIcon from '../../assets/common/logo-icon.png';
 import '../../styles/views/LandingContent/LoginPage.css';
 import { useAuth } from '../../authContext/AuthProvider';
-import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
   const  auth = useAuth();
   const [messageApi, contextHolder] = message.useMessage();
   if(auth.isLogged) {
-    window.location.href = 'admin/dashboard'
+    window.location.href = '/'+auth.role.toLowerCase()+'/dashboard';
   }
-  const navigate = useNavigate();
   const onFinish = async (values) => {
     const { email, password } = values;
     console.log(email);
@@ -22,7 +20,8 @@ const LoginPage = () => {
           type: 'success',
           content: `Welcome back, ${email}`,
         });
-        navigate('/admin/dashboard');
+        console.log('login ' + response);
+        window.location.href = '/'+response.toLowerCase() + '/dashboard';
       }
       else {
         messageApi.open({

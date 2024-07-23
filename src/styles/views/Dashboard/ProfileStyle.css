@@ -1,0 +1,134 @@
+.profile-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.settings-list {
+    list-style: none;
+    margin: 0px;
+}
+.settings-item {
+    color: #343A40;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.settings-item:hover {
+    color: #D50B1B;
+}
+.settings-item-active {
+    color: #D50B1B;
+}
+.profile-details-item {
+    border-top:solid 1px #EFF2F7 ;
+    display: flex;
+    padding:15px;
+}
+.profile-details-item__name {
+    font-weight: 500;
+    margin-right: 10px;
+    color: #495057;
+}
+.profile-details-item__value {
+    color: #495057;
+}
+.edit-icon {
+    cursor: pointer;
+}
+
+.registeration-card{
+    border: 1px solid #EFF2F7;
+    border-radius: 8px;
+    padding: 10px;
+}
+.course-title {
+    font-size: 16px;
+    font-weight: 500;
+}
+.ant-table-cell:has(.antd-cell-active) {
+    background-color: #B8CCE4;
+    font-weight: 500;
+}
+.student-data {
+    font-weight:500;
+    font-size: 14px;
+}
+.grad-report-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.grad-report-table tr {
+    background-color: white;
+}
+
+.grad-report-table th, .grad-report-table td {
+    border: 1px solid #ddd;
+    padding: 15px;
+}
+
+.grad-report-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.grad-report-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.grad-report-table tr:hover .delete-button {
+    display: inline;
+}
+.generate-exam-schedule-container {
+    padding: 20px;
+    background-color: #f0f2f5;
+  }
+  
+  .form-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .exam-schedule-form {
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .generate-button {
+    width: fit-content;
+  }
+  
+  .exam-schedule-table-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .exam-schedule-table {
+    overflow-x: auto;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .table th {
+    background-color: #f0f0f0;
+  }
+  

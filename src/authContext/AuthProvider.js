@@ -11,9 +11,7 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
-
     const userToken = localStorage.getItem('token');
-
     const checkCurrentUser = async () => {
       try {
         setLoading(true);
@@ -34,7 +32,6 @@ const AuthProvider = ({ children }) => {
         }
       } catch (error) {
         console.error('Error during auto login:', error.message);
-        setIsLogged(false);
       } finally {
         setLoading(false);
       }
@@ -47,7 +44,6 @@ const AuthProvider = ({ children }) => {
         setLoading(false);
       }
     };
-
     checkAuthentication();
   }, []);
 
@@ -64,15 +60,15 @@ const AuthProvider = ({ children }) => {
         setUser(res.user.name);
         setToken(res.token);
         setIsLogged(true);
-        setRole(res.user.role)
+        setRole(res.user.role);
         localStorage.setItem('token', res.token);
         console.log('success - User:', res.user);
-        return true;
+        return res.user.role;
       }
-
       throw new Error(res.message);
     } catch (err) {
       setUser(null);
+      setRole(null)
       setToken('');
       console.log('error');
       console.error('Error during login:', err);

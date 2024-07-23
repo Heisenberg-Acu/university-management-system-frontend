@@ -177,6 +177,24 @@ const AssistantLecturerForm = (props) => {
                     <Input.Password placeholder='Enter Assistant Lecturer password' defaultValue={assistantlecturerData?.password}/>
                 </Form.Item>
                 <Form.Item className='col-md-6'
+                    label="Course department"
+                    name="department"
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Please enter course department',
+                        },
+                    ]}
+                >
+                    <Select placeholder="Select Department">
+                        <Option value="General">General Science</Option>
+                        <Option value="Electrical">Electrical department</Option>
+                        <Option value="Architectural">Architectural department</Option>
+                        <Option value="Civil">Civil department</Option>
+                        <Option value="Mechanical">Mechanical department</Option>
+                    </Select>
+                </Form.Item>
+                <Form.Item className='col-md-6'
                     label="Assistant Lecturer Phone number"
                     name="phone"
                 >

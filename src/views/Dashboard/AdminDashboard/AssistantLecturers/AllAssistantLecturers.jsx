@@ -31,7 +31,7 @@ const AllAssistantLecturers = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchData = async () => { 
             try {
                 const userToken = localStorage.getItem("token");
                 const response = await axios.get('https://acu-eng.onrender.com/api/v1/admin/assistant-lecturers', {
@@ -39,17 +39,18 @@ const AllAssistantLecturers = () => {
                         Authorization: userToken
                     }
                 });
+                console.log(response.data[0].roleDocument)
                 const formattedAssistantLecturers = response.data.map(assistantLecturer => ({
-                    key: assistantLecturer.assistantLecturerId,
-                    name: assistantLecturer.userId.fullName,
-                    email: assistantLecturer.userId.email,
-                    phoneNumber: assistantLecturer.userId.phoneNumber,
+                    key: assistantLecturer.roleDocument.assistantLecturerId,
+                    name: assistantLecturer.fullName,
+                    email: assistantLecturer.email,
+                    phoneNumber: assistantLecturer.phoneNumber,
                     action: (
                         <div>
-                            <button className='btn btn--red me-3' onClick={() => handleEdit(assistantLecturer.assistantLecturerId)}>
+                            <button className='btn btn--red me-3' onClick={() => handleEdit(assistantLecturer.roleDocument.assistantLecturerId)}>
                                 <FontAwesomeIcon icon={faPenToSquare}/>
                             </button>
-                            <button className='btn btn--red' onClick={() => showDeleteConfirm(assistantLecturer.assistantLecturerId)}>
+                            <button className='btn btn--red' onClick={() => showDeleteConfirm(assistantLecturer.roleDocument.assistantLecturerId)}>
                                 <FontAwesomeIcon icon={faTrashCan}/>
                             </button>
                         </div>
@@ -79,6 +80,7 @@ const AllAssistantLecturers = () => {
             await axios.delete(`https://acu-eng.onrender.com/api/v1/admin/assistant-lecturer/${selectedAssistantLecturerId}`, {
                 headers: { Authorization: userToken },
             });
+            console.log(selectedAssistantLecturerId)
             const updatedAssistantLecturers = assistantLecturers.filter((assistantLecturer) => assistantLecturer.key !== selectedAssistantLecturerId);
             setAssistantLecturers(updatedAssistantLecturers);
             message.success('User deleted successfully');

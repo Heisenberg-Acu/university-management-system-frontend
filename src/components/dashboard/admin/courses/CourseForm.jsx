@@ -1,11 +1,32 @@
-import React from 'react'
-import { Form, Input, Select, Button, message } from 'antd'
+import React, { useEffect, useState } from 'react'
+import { Form, Input, Select, Button, message, Spin } from 'antd'
 import axios from 'axios';
 const { Option } = Select;
 
 const CourseForm = (props) => {
+    const [prereqeustCoursesList, setPrereqeustCoursesList] = useState();
+    const [loading, setLoading] = useState(true);
+    useEffect(() => {
+        const fetchCourses = async () => {
+            try {
+                const userToken = localStorage.getItem("token");
+                const response = await axios.get('https://acu-eng.onrender.com/api/v1/admin/courses', {
+                    headers: {
+                        Authorization: userToken
+                    }
+                });
+                setLoading(false);
+                setPrereqeustCoursesList(response.data.courses);
+            }
+            catch (error) {
+                console.log(error)
+            }
+        }
+        fetchCourses();
+    }, [])
+
     const onAddCourse = async (values) => {
-        console.log(values["pre-request"])
+        const prerequest = values['pre-request'].split(" ");
         try {
             const apiData = {
                 department: values['department'],
@@ -13,23 +34,32 @@ const CourseForm = (props) => {
                 courseTitle: values["title"],
                 creditHours: values["hours"],
                 level: values["level"],
-                preRequestCourse: { title: values["pre-request-title"], code: values["pre-request-code"] }
-            }
-            const userToken = localStorage.getItem('token')
+                preRequestCourse: {
+                    code: prerequest.length === 1 ? 'None' : prerequest[0],
+                    title: prerequest.length === 1 ? 'None' : prerequest.slice(1, prerequest.length - 1).join(" "),
+                    preRequestCourseId: prerequest.length === 1 ? null : prerequest[prerequest.length - 1],
+                }
+            };
+            const userToken = localStorage.getItem('token');
             const response = await axios.post("https://acu-eng.onrender.com/api/v1/admin/course", apiData, {
                 headers: {
                     Authorization: userToken,
-            }
-        });
-        console.log(response.data);
-        message.success('Course created successfully');
-        console.log('Course added successfully');
+                }
+            });
+            console.log('sent id ' + apiData.preRequestCourse.preRequestCourseId)
+            console.log(response);
+            message.success('Course created successfully');
+            console.log('Course added successfully');
         }
         catch (error) {
             message.error('Something went wrong');
             console.log(error);
         }
     }
+    if (loading) {
+        return <Spin />
+    }
+    console.log(prereqeustCoursesList);
     return (
         <div style={{ backgroundColor: 'white', borderRadius: 12 }} className='container p-4'>
             <h2 className='page-title mb-4'>Course Information</h2>
@@ -64,8 +94,11 @@ const CourseForm = (props) => {
                     ]}
                 >
                     <Select placeholder="Select Department">
-                        <Option value="Electrical">Electrical Department</Option>
-                        <Option value="Mechanical">Mechanical Department</Option>
+                        <Option value="General">General Science</Option>
+                        <Option value="Electrical">Electrical department</Option>
+                        <Option value="Architectural">Architectural department</Option>
+                        <Option value="Civil">Civil department</Option>
+                        <Option value="Mechanical">Mechanical department</Option>
                     </Select>
                 </Form.Item>
 
@@ -113,33 +146,20 @@ const CourseForm = (props) => {
                         <Option value="5">Level Five</Option>
                     </Select>
                 </Form.Item>
-                <div className='d-flex justify-content-between col-md-6' style={{ maxWidth: '100%' }}>
 
-                    <Form.Item className='col-md-8'
-                        label="Course Pre-request"
-                        name="pre-request-title"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Please enter course pre-request title',
-                            },
-                        ]}
-                    >
-                        <Input placeholder='Course title' />
-                    </Form.Item>
-                    <Form.Item className='col-md-3 mt-auto'
-                        name="pre-request-code"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Please enter course pre-request code',
-                            },
-                        ]}
-                    >
-                        <Input placeholder='Course Code' />
-
-                    </Form.Item>
-                </div>
+                <Form.Item className='col-md-6'
+                    label="Course Pre-request"
+                    name="pre-request"
+                >
+                    <Select placeholder="Choose prerequest">
+                        <Option key="none" value="None">None</Option>
+                        {prereqeustCoursesList.map(course => (
+                            <Option key={course._id} value={course.courseCode + ' ' + course.courseTitle + ' ' + course._id}>
+                                {`${course.courseCode} - ${course.courseTitle}`}
+                            </Option>
+                        ))}
+                    </Select>
+                </Form.Item>
                 <Form.Item className='col-md-12'>
                     <Button type="primary" htmlType="submit">
                         Add Course

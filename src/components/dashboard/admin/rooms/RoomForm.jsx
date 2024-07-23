@@ -6,7 +6,7 @@ const RoomForm = () => {
     const onAddRoom = async (values) => {
         try {
             const apiData = {
-                classRoomName: values['class-room-name'],
+                classroomName: values['class-room-name'],
                 capacity: values["capacity"],
                 available: true,
             }

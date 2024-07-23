@@ -29,12 +29,16 @@ const items = [
     {
         key: 'classes',
         label: (<Link to='/admin/classes'>Classes</Link>)
+    },
+    {
+        key: 'exams',
+        label: (<Link to='/admin/exams'>Exams</Link>)
     }
 ]
 const AdminNavbar = () => {
     const currentUrl = window.location.href;
     const urlWords = currentUrl.split('/');
-    const keys = ['students', 'lecturers', 'assistant-lecturers', 'courses', 'rooms', 'classes'];
+    const keys = ['students', 'lecturers', 'assistant-lecturers', 'courses', 'rooms', 'exams', 'classes'];
     let defaultKey = 'dashboard';
     for (let i in keys) {
         urlWords.forEach((word) => {

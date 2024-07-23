@@ -40,9 +40,9 @@ const AllRooms = () => {
           }
         });
         console.log(response)
-        const formattedRooms = response.data.rooms.map(room => ({
+        const formattedRooms = response.data.map(room => ({
           key: room._id,
-          name: room.classRoomName,
+          name: room.classroomName,
           capacity: room.capacity,
           available: room.available ? 'Available' : 'Not Available',
           action: (
@@ -77,7 +77,7 @@ const AllRooms = () => {
   const handleDelete = async () => {
     try {
       const userToken = localStorage.getItem('token');
-      await axios.delete(`https://acu-eng.onrender.com/api/v1/admin/rooms/${selectedRoomId}`, {
+      await axios.delete(`https://acu-eng.onrender.com/api/v1/admin/classroom/${selectedRoomId}`, {
         headers: { Authorization: userToken },
       });
       const updatedRooms = rooms.filter((room) => room.key !== selectedRoomId);
